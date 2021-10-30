@@ -1,16 +1,15 @@
 import 'package:flutter/material.dart';
+import 'counter.dart';
 
-import '../../../src/infra/usecases/usecases.dart';
-import '../../../src/presenter/presentation/presentation.dart';
 import '../../../src/ui/mixins/mixins.dart';
 
 class CounterPage extends StatelessWidget with UIErrorMixin {
-  const CounterPage({Key? key}) : super(key: key);
+  final CounterPresenter presenter;
+
+  CounterPage({required this.presenter, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final counter = Counter(0);
-    final presenter = StreamCounterPresenter(counter: counter);
     return StreamBuilder(
       initialData: presenter.value,
       stream: presenter.value,
