@@ -7,7 +7,11 @@ class Counter implements Increment, Decrement {
   void increment() => value++;
 
   @override
-  void decrement() => value--;
+  void decrement() {
+    if (value > 0) {
+      value--;
+    }
+  }
 }
 
 void main() {
@@ -26,6 +30,12 @@ void main() {
   test('Counter value should be decremented', () {
     sut.increment();
 
+    sut.decrement();
+
+    expect(sut.value, 0);
+  });
+
+  test('Counter value should never be decremented if the value > 1', () {
     sut.decrement();
 
     expect(sut.value, 0);
