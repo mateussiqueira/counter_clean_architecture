@@ -15,6 +15,8 @@ class Counter implements Increment, Decrement {
   void decrement() {
     if (_value > 0) {
       _value--;
+    } else {
+      throw Exception();
     }
   }
 }

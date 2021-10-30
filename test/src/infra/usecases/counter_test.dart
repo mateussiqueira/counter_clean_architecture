@@ -26,9 +26,19 @@ void main() {
     expect(sut.value, 0);
   });
 
-  test('Counter value should never be decremented if the value > 1', () {
+  test('Counter value should never be decremented if the value < 1', () {
+    sut.increment();
+
     sut.decrement();
 
     expect(sut.value, 0);
+
+    final result = sut.decrement;
+    expect(result, throwsA(const TypeMatcher<Exception>()));
+  });
+  test('Counter call decremented throw Exception if the value equals 0', () {
+    final result = sut.decrement;
+
+    expect(result, throwsA(const TypeMatcher<Exception>()));
   });
 }
