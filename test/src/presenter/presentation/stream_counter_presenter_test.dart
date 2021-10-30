@@ -9,6 +9,9 @@ class CounterSpy extends Mock implements Counter {
   When mockIncrementCall() => when(() => increment());
   void mockIncrement() => mockIncrementCall().thenAnswer((_) => _);
 
+  When mockDecrementCall() => when(() => decrement());
+  void mockDecrement() => mockDecrementCall().thenAnswer((_) => _);
+
   When mockValueCall() => when(() => value);
   void mockValue(int newValue) => mockValueCall().thenReturn(newValue);
 }
@@ -33,7 +36,9 @@ class StreamCounterPresenter implements CounterPresenter {
 
   @override
   void decrement() {
-    // TODO: implement decrement
+    counter.decrement();
+    _state.value = counter.value;
+    update();
   }
 
   @override
@@ -57,6 +62,7 @@ void main() {
     counter = CounterSpy();
     sut = StreamCounterPresenter(counter: counter);
     counter.mockIncrement();
+    counter.mockDecrement();
   });
   test('Should call Increment with correct values', () {
     sut.increment();
@@ -68,5 +74,13 @@ void main() {
     counter.mockValue(1);
     sut.value.listen(expectAsync1((value) => expect(value, 1)));
     sut.increment();
+  });
+
+  test('Should call Decrement with correct values', () {
+    counter.mockValue(1);
+
+    sut.decrement();
+
+    verify(() => counter.decrement()).called(1);
   });
 }
