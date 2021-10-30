@@ -6,7 +6,7 @@ void main() {
   late Counter sut;
 
   setUp(() {
-    sut = Counter();
+    sut = Counter(0);
   });
 
   test('value should start at 0', () {

@@ -1,14 +1,20 @@
 import '../../domain/usecases/usecases.dart';
 
 class Counter implements Increment, Decrement {
-  int value = 0;
+  late int _value;
+
+  Counter(this._value) {
+    _value = 0;
+  }
+
+  int get value => _value;
   @override
-  void increment() => value++;
+  void increment() => _value++;
 
   @override
   void decrement() {
-    if (value > 0) {
-      value--;
+    if (_value > 0) {
+      _value--;
     }
   }
 }
