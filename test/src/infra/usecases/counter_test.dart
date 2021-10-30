@@ -1,10 +1,13 @@
 import 'package:study_tree/src/domain/usecases/usecases.dart';
 import 'package:test/test.dart';
 
-class Counter implements Increment {
+class Counter implements Increment, Decrement {
   int value = 0;
   @override
   void increment() => value++;
+
+  @override
+  void decrement() => value--;
 }
 
 void main() {
@@ -18,5 +21,13 @@ void main() {
     sut.increment();
 
     expect(sut.value, 1);
+  });
+
+  test('Counter value should be decremented', () {
+    sut.increment();
+
+    sut.decrement();
+
+    expect(sut.value, 0);
   });
 }
