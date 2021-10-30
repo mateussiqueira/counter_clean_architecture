@@ -2,10 +2,9 @@ import 'package:study_tree/src/domain/usecases/usecases.dart';
 import 'package:test/test.dart';
 
 class Counter implements Increment {
+  int value = 0;
   @override
-  int increment(int value) {
-    return value + 1;
-  }
+  void increment() => value++;
 }
 
 void main() {
@@ -15,9 +14,9 @@ void main() {
     sut = Counter();
   });
 
-  test('Should call Increment return input number plus 1', () {
-    final result = sut.increment(3);
+  test('Counter value should be incremented', () {
+    sut.increment();
 
-    expect(result, 4);
+    expect(sut.value, 1);
   });
 }
