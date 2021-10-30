@@ -83,4 +83,10 @@ void main() {
 
     verify(() => counter.decrement()).called(1);
   });
+
+  test('Should call Decrement return correct values', () {
+    counter.mockValue(1);
+    sut.value.listen(expectAsync1((value) => expect(value, 1)));
+    sut.decrement();
+  });
 }
