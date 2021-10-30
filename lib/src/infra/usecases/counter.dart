@@ -1,3 +1,5 @@
+import 'package:study_tree/src/domain/helpers/domain_error.dart';
+
 import '../../domain/usecases/usecases.dart';
 
 class Counter implements Increment, Decrement {
@@ -16,7 +18,7 @@ class Counter implements Increment, Decrement {
     if (_value > 0) {
       _value--;
     } else {
-      throw Exception();
+      throw DomainError.unexpected;
     }
   }
 }

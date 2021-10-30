@@ -1,9 +1,6 @@
-import 'dart:async';
-
 import 'package:mocktail/mocktail.dart';
 import 'package:study_tree/src/infra/usecases/counter.dart';
 import 'package:study_tree/src/presenter/presentation/presentation.dart';
-import 'package:study_tree/src/ui/counter/counter_presenter.dart';
 import 'package:test/test.dart';
 
 class CounterSpy extends Mock implements Counter {
@@ -28,6 +25,7 @@ void main() {
     counter.mockDecrement();
   });
   test('Should call Increment with correct values', () {
+    counter.mockValue(1);
     sut.increment();
 
     verify(() => counter.increment()).called(1);

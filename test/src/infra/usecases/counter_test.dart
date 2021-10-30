@@ -1,3 +1,4 @@
+import 'package:study_tree/src/domain/helpers/helpers.dart';
 import 'package:test/test.dart';
 
 import 'package:study_tree/src/infra/usecases/counter.dart';
@@ -34,11 +35,11 @@ void main() {
     expect(sut.value, 0);
 
     final result = sut.decrement;
-    expect(result, throwsA(const TypeMatcher<Exception>()));
+    expect(result, throwsA(DomainError.unexpected));
   });
   test('Counter call decremented throw Exception if the value equals 0', () {
     final result = sut.decrement;
 
-    expect(result, throwsA(const TypeMatcher<Exception>()));
+    expect(result, throwsA(DomainError.unexpected));
   });
 }
