@@ -21,6 +21,9 @@ void main() {
     sut = Counter();
   });
 
+  test('value should start at 0', () {
+    expect(sut.value, 0);
+  });
   test('Counter value should be incremented', () {
     sut.increment();
 
