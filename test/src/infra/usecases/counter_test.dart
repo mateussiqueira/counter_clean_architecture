@@ -1,18 +1,6 @@
-import 'package:study_tree/src/domain/usecases/usecases.dart';
 import 'package:test/test.dart';
 
-class Counter implements Increment, Decrement {
-  int value = 0;
-  @override
-  void increment() => value++;
-
-  @override
-  void decrement() {
-    if (value > 0) {
-      value--;
-    }
-  }
-}
+import 'package:study_tree/src/infra/usecases/counter.dart';
 
 void main() {
   late Counter sut;
