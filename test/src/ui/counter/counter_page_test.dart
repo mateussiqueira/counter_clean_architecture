@@ -31,6 +31,19 @@ main() {
     expect(appBarText, findsOneWidget);
   });
 
+  testWidgets('Should increment change value', (WidgetTester tester) async {
+    await counterPage(tester);
+
+    presenter.increment();
+
+    final value = find.descendant(
+        of: find.bySemanticsLabel('1'), matching: find.byType(Text));
+
+    await tester.pump();
+
+    expect(value, findsOneWidget);
+  });
+
   testWidgets('Should present Error message', (WidgetTester tester) async {
     await counterPage(tester);
 
