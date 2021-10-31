@@ -3,18 +3,30 @@ import 'counter.dart';
 
 import '../../../src/ui/mixins/mixins.dart';
 
-class CounterPage extends StatelessWidget with UIErrorMixin {
+class CounterPage extends StatefulWidget {
   final CounterPresenter presenter;
 
   CounterPage({required this.presenter, Key? key}) : super(key: key);
 
   @override
+  State<CounterPage> createState() => _CounterPageState();
+}
+
+class _CounterPageState extends State<CounterPage> with UIErrorMixin {
+  @override
+  void dispose() {
+    super.dispose();
+    widget.presenter.decrement();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return StreamBuilder(
-      initialData: presenter.value,
-      stream: presenter.value,
+      initialData: widget.presenter.value,
+      stream: widget.presenter.value,
       builder: (context, snapshot) {
-        handleValueError(context: context, error: presenter.valueErrorStream);
+        handleValueError(
+            context: context, error: widget.presenter.valueErrorStream);
         return Scaffold(
           appBar: AppBar(
             title: const Text('Counter'),
@@ -28,11 +40,11 @@ class CounterPage extends StatelessWidget with UIErrorMixin {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 FloatingActionButton(
-                  onPressed: presenter.increment,
+                  onPressed: widget.presenter.increment,
                   child: const Icon(Icons.add),
                 ),
                 FloatingActionButton(
-                  onPressed: presenter.decrement,
+                  onPressed: widget.presenter.decrement,
                   child: const Icon(Icons.remove),
                 ),
               ],

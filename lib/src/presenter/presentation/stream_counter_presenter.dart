@@ -36,7 +36,6 @@ class StreamCounterPresenter with UIErrorMixin implements CounterPresenter {
     } on DomainError catch (error) {
       _state.valueErrorStream = error.description;
     }
-
     update();
   }
 

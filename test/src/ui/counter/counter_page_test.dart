@@ -18,6 +18,9 @@ main() {
     await tester.pumpWidget(counterPage);
   }
 
+  tearDown(() {
+    presenter.dispose();
+  });
   testWidgets('Should Load with correct initial state',
       (WidgetTester tester) async {
     await counterPage(tester);
@@ -36,5 +39,16 @@ main() {
     await tester.pump();
 
     expect(find.byType(SnackBar), findsOneWidget);
+  });
+
+  testWidgets('Should close streams on dispose', (WidgetTester tester) async {
+    await counterPage(tester);
+
+    presenter.decrement();
+    addTearDown(() {
+      presenter.dispose();
+
+      expect(presenter.valueErrorStream, null);
+    });
   });
 }
