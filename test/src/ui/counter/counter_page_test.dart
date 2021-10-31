@@ -41,6 +41,22 @@ main() {
     expect(find.byType(SnackBar), findsOneWidget);
   });
 
+  testWidgets(
+    'Should present Error message',
+    (WidgetTester tester) async {
+      await counterPage(tester);
+
+      presenter.decrement();
+
+      await tester.pump();
+
+      expect(
+        find.text('Erro, não é possivel decrementar valores menores que 1'),
+        findsOneWidget,
+      );
+    },
+  );
+
   testWidgets('Should close streams on dispose', (WidgetTester tester) async {
     await counterPage(tester);
 

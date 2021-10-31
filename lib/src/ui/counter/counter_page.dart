@@ -13,11 +13,11 @@ class CounterPage extends StatefulWidget {
 }
 
 class _CounterPageState extends State<CounterPage> with UIErrorMixin {
-  @override
-  void dispose() {
-    super.dispose();
-    widget.presenter.decrement();
-  }
+  // @override
+  // void dispose() {
+  //   super.dispose();
+  //   widget.presenter.decrement();
+  // }
 
   @override
   Widget build(BuildContext context) {
