@@ -1,17 +1,15 @@
-# study_tree
+# Counter using Clean Architecture
 
-A new Flutter project.
 
-## Getting Started
+<div align="center">
+  <img rsc ="https://user-images.githubusercontent.com/54752439/139579595-683ec32e-3328-4493-aab1-5f4daa831cb7.png" width="480px" />
+  </div>
+  
+  <div align="center">
+  <img rsc ="https://user-images.githubusercontent.com/54752439/139579597-09c77382-911e-4eb7-9feb-0559feb5f7d8.png" width="480px" />
+  </div>
+  
+   <div align="center">
+  <img rsc ="https://user-images.githubusercontent.com/54752439/139579599-c1f17997-bb28-4448-a38d-27ec9b6be169.png" width="480px" />
+  </div>
 
-This project is a starting point for a Flutter application.
-
-A few resources to get you started if this is your first Flutter project:
-
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
-# counter_clean_architecture
